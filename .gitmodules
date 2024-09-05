@@ -1,0 +1,6 @@
+[submodule "backend"]
+	path = backend
+	url = https://github.com/ktb-hackathon-earsToWorld/EARS_TO_WORLD_BE
+[submodule "frontend"]
+	path = frontend
+	url = https://github.com/ktb-hackathon-earsToWorld/EARS_TO_WORLD_FE
