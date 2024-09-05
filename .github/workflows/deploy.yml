@@ -20,7 +20,7 @@ jobs:
         username: ${{ secrets.EC2_USER }}
         key: ${{ secrets.PRIVATE_KEY }}
         port: 22
-        source: './deploy'
+        source: './deploy/*'
         target: '~/deploy'
 
     - name: Deploy
