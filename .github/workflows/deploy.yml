@@ -30,7 +30,8 @@ jobs:
           mv ~/deploy/.env ~/deploy/.env.bak
         fi
         printf "${{ secrets.ENV_FILE }}" >> ~/deploy/.env
-
+        cat .env 
+        
     - name: Deploy
       uses: appleboy/ssh-action@master
       with:
