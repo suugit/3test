@@ -24,9 +24,12 @@ jobs:
         target: '~'
 
     # 환경변수 생성하기  
-    - name: Create .env file
+    - name: Backup and create .env file
       run: |
-        printf "${{ secrets.ENV_FILE }}" > ~/deploy/.env
+        if [ -f ~/deploy/.env ]; then
+          mv ~/deploy/.env ~/deploy/.env.bak
+        fi
+        printf "${{ secrets.ENV_FILE }}" >> ~/deploy/.env
 
     - name: Deploy
       uses: appleboy/ssh-action@master
