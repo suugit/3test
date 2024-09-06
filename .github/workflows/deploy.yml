@@ -23,15 +23,16 @@ jobs:
         source: './deploy'
         target: '~'
 
-    - name: Backup and create .env file
-      run: |
-        echo '123' >> ~/deploy/test.txt
- 
     # 환경변수 생성하기  
-    - name: Backup and create .env file
-      run: |
-        printf "${{ secrets.ENV_FILE }}" >> ~/deploy/.env
-        cat .env 
+    - name: Create test file and .env file
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ${{ secrets.EC2_USER }}
+        key: ${{ secrets.PRIVATE_KEY }}
+        script: |
+          echo "${{ secrets.ENV_FILE }}" > ~/deploy/.env
+          cat ~/deploy/.env
 
     - name: Deploy
       uses: appleboy/ssh-action@master
