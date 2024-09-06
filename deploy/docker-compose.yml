@@ -26,6 +26,8 @@ services:
     networks:
       - ktb_network
     restart: always
+    env_file:
+      - .env
 
 networks:
   ktb_network:
