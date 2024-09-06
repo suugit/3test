@@ -23,9 +23,10 @@ jobs:
         source: './deploy'
         target: '~'
 
-    # 환경변수 생성하기 
+    # 환경변수 생성하기  
     - name: Create .env file
-      run: echo "${{ secrets.ENV_FILE }}" > .env
+      run: |
+        printf "${{ secrets.ENV_FILE }}" > .env
 
     - name: Deploy
       uses: appleboy/ssh-action@master
