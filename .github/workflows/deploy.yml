@@ -23,6 +23,13 @@ jobs:
         source: './deploy'
         target: '~'
 
+    # 환경변수 생성
+    - name: Create .env file
+      run: |
+        for secret in $(env | grep '^ENV_' | cut -d= -f1); do
+          echo "$secret=${!secret}" >> .env
+        done
+        
     - name: Deploy
       uses: appleboy/ssh-action@master
       with:
