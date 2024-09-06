@@ -25,11 +25,8 @@ jobs:
 
     # 환경변수 생성하기 
     - name: Create .env file
-      run: |
-        for secret in $(env | grep '^ENV_' | cut -d= -f1); do
-          echo "$secret=${!secret}" >> .env
-        done
-        
+      run: echo "${{ secrets.ENV_FILE }}" > .env
+
     - name: Deploy
       uses: appleboy/ssh-action@master
       with:
